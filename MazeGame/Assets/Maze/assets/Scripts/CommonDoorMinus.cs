@@ -28,7 +28,6 @@ public class CommonDoorMinus
         //movePos = moveToObject.transform.position;
         totalDist = Vector3.Distance(initialPos, movePos);
         DoorSound = GameObject.Find("Doors&Food").GetComponent<AudioSource>();
-        print(DoorSound);
         DoorSound.Stop();
         //keyImage.SetActive(false);
     }

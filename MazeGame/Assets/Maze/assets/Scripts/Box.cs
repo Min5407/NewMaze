@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
+    private const int V = 0;
     public GameObject player;
     public GameObject keyImage;
-
+    GameObject FoodCanvas;
+    public List<GameObject> FoodImages;
 
     // Start is called before the first frame update
     void Start()
     {
         keyImage.SetActive(false);
+        FoodCanvas = GameObject.Find("ChickenHealth");
+        foodImages();
+
 
     }
 
@@ -23,14 +28,25 @@ public class Box : MonoBehaviour
 
 
     }
+   
+
+
     void OnTriggerEnter(Collider other)
     {
 
         if (other.gameObject.tag == "Player")
         {
-            print("hitted");
+
+            for (int i = 0; i < FoodImages.Count; i++)
+            {
+              
+                if (FoodImages[i].name == this.gameObject.name)
+                {
+                    FoodImages[i].SetActive(true);
+                }
+            }
             //keyImage.SetActive(false);
-     
+
             transform.parent = player.transform;
             this.gameObject.SetActive(false);
             
@@ -40,6 +56,18 @@ public class Box : MonoBehaviour
 
         }
     }
+    void foodImages()
+    {
+        foreach (Transform child in FoodCanvas.transform)
+        {
+            if (child.tag == "Food")
+            {
+                FoodImages.Add(child.gameObject);
+            }
+        }
+    }
 
   
+
+
 }

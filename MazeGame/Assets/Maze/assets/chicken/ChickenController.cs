@@ -160,7 +160,6 @@ public class ChickenController : MonoBehaviour
         if (other.gameObject.tag == "Door")
         {
             keyImage.SetActive(true);
-            print("DOOR");
         }
     }
     private void OnTriggerExit(Collider other)
