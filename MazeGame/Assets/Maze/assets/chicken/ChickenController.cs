@@ -18,6 +18,7 @@ public class ChickenController : MonoBehaviour
     Animator anim;
     public GameObject keyImage;
     AudioSource walkSound;
+    int health;
 
 
 

@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: b14ae578b801646808489e998404006a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - instruction: {instanceID: 0}
+  - keyTexture: {instanceID: 0}
+  - successPanel: {fileID: 387448484216889871, guid: 8ab3b52f35c3442009d325c0f027b4b7,
+      type: 3}
+  - failPanel: {fileID: 489280276332773063, guid: c49fa6525ca6d4ea5844fd00cacf3205,
+      type: 3}
+  - boss: {instanceID: 0}
+  - door: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

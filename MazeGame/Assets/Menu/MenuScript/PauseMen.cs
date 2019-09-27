@@ -12,7 +12,6 @@ public class PauseMen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("sdf");
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused)
