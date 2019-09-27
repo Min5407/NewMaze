@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Quiz : MonoBehaviour
+public class MazeQuiz2 : MonoBehaviour
 {
     public GameObject instruction;
     public GameObject keyTexture;
@@ -23,6 +23,7 @@ public class Quiz : MonoBehaviour
 
     protected int score;
     public GameObject boss;
+    public GameObject door;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +35,7 @@ public class Quiz : MonoBehaviour
     {
         if (playerInTrigger)
         {
-            if (Input.GetKeyDown("e"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 quizComplete = false;
                 keyTexture.SetActive(false);
@@ -90,6 +91,7 @@ public class Quiz : MonoBehaviour
 
         if (failPanelOpen)
         {
+            Invoke("closefailPanel", 2f);
             if (Input.GetKeyDown(KeyCode.T))
             {
                 failPanel.SetActive(false);
@@ -114,7 +116,9 @@ public class Quiz : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("PLAYERPLAYER");
         if (other.gameObject.tag == "Player" & quizComplete == false)
+            
         {
             print("player enter");
             if (keyTexture)
@@ -160,7 +164,8 @@ public class Quiz : MonoBehaviour
                 successPanel.SetActive(true);
                 successPanelOpen = true;
                 userAnswer = 0;
-                boss.SendMessage("addScore", 1);
+                door.SendMessage("Open");
+                //boss.SendMessage("addScore", 1);
 
             }
             else if (userAnswer != 0 & userAnswer != answer)

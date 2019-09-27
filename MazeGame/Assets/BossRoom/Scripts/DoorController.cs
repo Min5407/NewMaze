@@ -24,6 +24,10 @@ public class DoorController : MonoBehaviour
     private bool doorOpening = false;
     private bool doorClosing = false;
 
+    protected Transform playerTransform;
+    protected Transform bossTransform;
+
+    public float dist;
 
     void Start()
     {
@@ -32,11 +36,17 @@ public class DoorController : MonoBehaviour
         moveToPosition = moveToObj.transform.position;
 
         totalDist = Vector3.Distance(initialPosition, moveToPosition);
+
+        GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
+        playerTransform = objPlayer.transform;
+        GameObject objBoss = GameObject.FindGameObjectWithTag("Boss");
+        bossTransform = objBoss.transform;
     }
 
 
     void OnTriggerEnter(Collider col)
     {
+
         if (col.gameObject.tag == "Player")
         {
             print("player enter");
@@ -50,11 +60,18 @@ public class DoorController : MonoBehaviour
             playerInTrigger = true;
             tanksInTrigger++;
         }
-        else if (col.gameObject.tag == "EnemyTank")
+        else if (col.gameObject.tag == "Boss")
         {
+            print(dist);
             if (doorClosing)
             {
                 doorOpening = true;
+            }
+            if(dist > 30.0f)
+            {
+                print("Boss enter");
+                float distCovered = (Vector3.Distance(door.transform.position, initialPosition) + moveSpeed * Time.deltaTime) / totalDist;
+                door.GetComponent<Rigidbody>().MovePosition(Vector3.Lerp(initialPosition, moveToPosition, distCovered));
             }
             tanksInTrigger++;
         }
@@ -73,7 +90,7 @@ public class DoorController : MonoBehaviour
             tanksInTrigger--;
         }
 
-        else if (col.gameObject.tag == "EnemyTank")
+        else if (col.gameObject.tag == "Boss")
         {
             tanksInTrigger--;
         }
@@ -82,6 +99,7 @@ public class DoorController : MonoBehaviour
 
     void Update()
     {
+        dist = Vector3.Distance(bossTransform.position, playerTransform.position);
         if (playerInTrigger)
         {
             if ((doorClosed) & (Input.GetKeyDown("e")))
@@ -126,6 +144,8 @@ public class DoorController : MonoBehaviour
                 }
             }
         }
+        
+
     }
 }
 
