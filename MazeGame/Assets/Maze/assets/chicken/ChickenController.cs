@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
+using UnityEngine.UI;
 
 public class ChickenController : MonoBehaviour
 {
@@ -18,9 +18,13 @@ public class ChickenController : MonoBehaviour
     Animator anim;
     public GameObject keyImage;
     AudioSource walkSound;
-    int health;
 
+    public float health_width;
+    public float health_height;
+    public Image healthbar;
 
+    public int health;
+    public int maxHealth;
 
     private float timePassed = 0.0f;
     private float timer = 10.0f;
@@ -41,6 +45,12 @@ public class ChickenController : MonoBehaviour
         anim = GetComponent<Animator>();
         walkSound = GetComponent<AudioSource>();
         walkSound.Stop();
+        health = 100;
+
+        health_height = healthbar.rectTransform.rect.height;
+        health_width = healthbar.rectTransform.rect.width;
+        maxHealth = health;
+
     }
 
     // Update is called once per frame
@@ -170,5 +180,33 @@ public class ChickenController : MonoBehaviour
             keyImage.SetActive(false);
            
         }
+    }
+
+    public void ApplyDamage(int damage)
+    {
+        float ratio = (health_width * damage) / maxHealth;
+        float new_width = healthbar.rectTransform.rect.width - ratio;
+
+        if(health == 100 && damage < 0)
+        {
+            print("more than 100");
+        }
+        else {
+            health -= damage;
+            healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
+
+            print(damage);
+            
+
+        }
+
+
+    }
+
+    public void AdjustSpeed(int speedChange)
+    {
+
+        speed += 1.5f;
+        runningSpeed += speedChange;
     }
 }
