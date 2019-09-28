@@ -116,7 +116,6 @@ public class MazeQuiz2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("PLAYERPLAYER");
         if (other.gameObject.tag == "Player" & quizComplete == false)
             
         {

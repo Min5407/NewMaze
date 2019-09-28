@@ -2442,7 +2442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 143.9
+      value: 60.1
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2450,7 +2450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 165.4
+      value: 252.2
       objectReference: {fileID: 0}
     - target: {fileID: 4303844821561524, guid: 312b31977ed9b2d48a14849ebb8c7fb3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3732,7 +3732,7 @@ NavMeshObstacle:
   m_Enabled: 1
   serializedVersion: 3
   m_Shape: 0
-  m_Extents: {x: 2.5, y: 2.5, z: 2.5}
+  m_Extents: {x: 0.00001, y: 2.5, z: 0.00001}
   m_MoveThreshold: 0.1
   m_Carve: 0
   m_CarveOnlyStationary: 1
@@ -33755,6 +33755,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 475825085247574423, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8154582ac57d64654b340d6268761c40, type: 2}
+    - target: {fileID: 561817890271226405, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817890271226405, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 561817890271226403, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33780,6 +33795,56 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[3]
       value: 
       objectReference: {fileID: 1314921199}
+    - target: {fileID: 561817890271226403, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817890271226403, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 475825085277684403, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8154582ac57d64654b340d6268761c40, type: 2}
+    - target: {fileID: 561817892056732262, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732262, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732262, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732281, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732281, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732281, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732281, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 561817892056732260, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33800,6 +33865,36 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[2]
       value: 
       objectReference: {fileID: 868845806}
+    - target: {fileID: 561817892056732260, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892056732260, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 475825085820632045, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a3e93f2b712c14a9ba53f1e94b5d6fb8, type: 2}
+    - target: {fileID: 561817891384235382, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891384235382, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891384235382, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 561817891384235380, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33825,6 +33920,31 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[2]
       value: 
       objectReference: {fileID: 1653349126}
+    - target: {fileID: 561817891384235380, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891384235380, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 475825095629777316, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 732de23b55e074c5da3c178eb349bd44, type: 2}
+    - target: {fileID: 561817892297394264, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892297394264, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 561817892297394246, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33840,6 +33960,36 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[1]
       value: 
       objectReference: {fileID: 298700855}
+    - target: {fileID: 561817892297394246, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892297394246, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817892297394265, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Speed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 475825094568731374, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 732de23b55e074c5da3c178eb349bd44, type: 2}
+    - target: {fileID: 561817891695249682, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891695249682, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 561817891695249680, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33865,6 +34015,36 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[3]
       value: 
       objectReference: {fileID: 881315003}
+    - target: {fileID: 561817891695249680, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891695249680, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891695249683, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Speed
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 475825085231627648, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1c66ed4d009d842c2ae1c71cb209b0e9, type: 2}
+    - target: {fileID: 561817891459145010, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891459145010, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 561817891459145012, guid: abf94a6a8513845bda4c5aaa273c99bd,
         type: 3}
       propertyPath: waypointList.Array.size
@@ -33890,6 +34070,16 @@ PrefabInstance:
       propertyPath: waypointList.Array.data[3]
       value: 
       objectReference: {fileID: 467045866}
+    - target: {fileID: 561817891459145012, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRange
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 561817891459145012, guid: abf94a6a8513845bda4c5aaa273c99bd,
+        type: 3}
+      propertyPath: attackRangeMin
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abf94a6a8513845bda4c5aaa273c99bd, type: 3}
 --- !u!1 &2003834427

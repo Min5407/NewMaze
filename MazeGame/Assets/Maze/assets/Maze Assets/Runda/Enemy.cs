@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     }
     public FSMState curState;
 
+    Animator anim;
     protected Transform playerTransform; //Player Transform
     public GameObject[] waypointList;
 
@@ -34,13 +35,14 @@ public class Enemy : MonoBehaviour
     //Ranges for chase and attack
     public float chaseRange = 30.0f;
     public float attackRange = 7.0f;
-    public float attackRangeMin = 7.0f;
+    public float attackRangeMin = 4.0f;
 
     public GameObject enemy;
     public float enemyRotSpeed = 15.0f;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         //reference the navmeshagent so we can access it
         nav = GetComponent<NavMeshAgent>();
 
@@ -88,7 +90,7 @@ public class Enemy : MonoBehaviour
 
     protected void UpdatePatrolState()
     {
-
+        anim.SetInteger("attack", 0);
 
         // NavMeshAgent move code goes here
         //nav.SetDestination(waypointList[currentWaypoint].transform.position);
@@ -137,6 +139,8 @@ public class Enemy : MonoBehaviour
 
     protected void UpdateChaseState()
     {
+        anim.SetInteger("attack", 0);
+
         //NavMeshAgent move
         if (elapsedPathCheckTime >= pathCheckTime)
         {
@@ -167,10 +171,14 @@ public class Enemy : MonoBehaviour
 
     protected void UpdateAttackState()
     {
+
         //check distance with player 
         float dist = Vector3.Distance(transform.position, playerTransform.position);
         if (dist >= attackRangeMin && dist <= attackRange)
         {
+            anim.SetInteger("attack", 1);
+
+
             //move toward target
             if (elapsedPathCheckTime >= pathCheckTime)
             {
@@ -181,6 +189,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            anim.SetInteger("attack", 0);
+
             nav.isStopped = true;
         }
 
