@@ -172,6 +172,11 @@ public class ChickenController : MonoBehaviour
         {
             keyImage.SetActive(true);
         }
+
+        if (other.gameObject.tag == "Enemy")
+        {
+            ApplyDamage(25);
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -195,8 +200,7 @@ public class ChickenController : MonoBehaviour
             health -= damage;
             healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
 
-            print(damage);
-            
+
 
         }
 
