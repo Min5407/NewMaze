@@ -70,9 +70,11 @@ public class CommonDoorMinus
         if (other.gameObject.tag == "Player" && (foodfound == transform.name + "food") && Input.GetKeyDown(KeyCode.E))
         {
             doorOpen = true;
+            print(DoorSound);
             DoorSound.Play();
+            print("music");
 
-            Invoke("mute", 2.8f);
+            //Invoke("mute", 2.8f);
 
             //Destroy(this.gameObject);
             //var oldPos = new Vector3(transform.position.x + 5.0f, transform.position.y, transform.position.z)

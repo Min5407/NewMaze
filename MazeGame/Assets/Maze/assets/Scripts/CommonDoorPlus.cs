@@ -65,7 +65,10 @@ public class CommonDoorPlus : MonoBehaviour
                     {
                         doorOpen = true;
                         DoorSound.Play();
-                        Invoke("mute", 2.8f);
+            print(DoorSound);
+
+            print("play");
+                        //Invoke("mute", 2.8f);
             
 
             //Destroy(this.gameObject);
