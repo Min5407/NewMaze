@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ChickenController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class ChickenController : MonoBehaviour
     float rotationspeed = 100;
     float gravity = 8;
     float runningSpeed = 50;
+    public GameObject outPost;
+
     float rotation = 0f;
     Vector3 movedirection = Vector3.zero;
     CharacterController controller;
@@ -28,6 +31,8 @@ public class ChickenController : MonoBehaviour
 
     private float timePassed = 0.0f;
     private float timer = 10.0f;
+
+    public GameObject lostPanel;
     // Start is called before the first frame update
 
     private IEnumerator ChangeCamera()
@@ -42,14 +47,25 @@ public class ChickenController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
         anim = GetComponent<Animator>();
         walkSound = GetComponent<AudioSource>();
         walkSound.Stop();
-        health = 100;
+        health = PlayerPrefs.GetInt("currentHealth");
 
         health_height = healthbar.rectTransform.rect.height;
         health_width = healthbar.rectTransform.rect.width;
-        maxHealth = health;
+        maxHealth = 100;
+
+
+        float damage = 100 - health;
+        float ratio = (health_width * damage) / maxHealth;
+        float new_width = healthbar.rectTransform.rect.width - ratio;
+
+        healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
+
+        //ApplyDamage(0);
+
 
     }
 
@@ -61,8 +77,9 @@ public class ChickenController : MonoBehaviour
         timePassed += Time.deltaTime;
         if (Input.GetKeyUp(KeyCode.C))
         {
-            
-                StartCoroutine(ChangeCamera());
+
+            StartCoroutine(ChangeCamera());
+            //SceneManager.LoadScene("BossRoom");
             
             
             
@@ -85,6 +102,21 @@ public class ChickenController : MonoBehaviour
         //    cam1.gameObject.SetActive(true);
         //    cam2.gameObject.SetActive(false);
         //}
+        if(health <= 0)
+        {
+
+            Scene scene = SceneManager.GetActiveScene();
+            if (scene.name != "BossRoom")
+            {
+                outPost.GetComponent<Help>().pauseStopWatch();
+            }
+
+
+
+                Time.timeScale = 0;
+            lostPanel.SetActive(true);
+
+        }
     }
 
     void chickenMovement()
@@ -191,15 +223,19 @@ public class ChickenController : MonoBehaviour
     {
         float ratio = (health_width * damage) / maxHealth;
         float new_width = healthbar.rectTransform.rect.width - ratio;
+        healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
 
-        if(health == 100 && damage < 0)
+
+        if (health == 100 && damage < 0)
         {
             print("more than 100");
         }
         else {
             health -= damage;
             healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
-
+            PlayerPrefs.SetInt("currentHealth", health);
+            print(health);
+            
 
 
         }
@@ -212,5 +248,10 @@ public class ChickenController : MonoBehaviour
 
         speed += 1.5f;
         runningSpeed += speedChange;
+    }
+
+    public void restart()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

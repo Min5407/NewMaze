@@ -39,7 +39,7 @@ public class DoorController : MonoBehaviour
 
         GameObject objPlayer = GameObject.FindGameObjectWithTag("Player");
         playerTransform = objPlayer.transform;
-        GameObject objBoss = GameObject.FindGameObjectWithTag("Boss");
+        GameObject objBoss = GameObject.FindGameObjectWithTag("Enemy");
         bossTransform = objBoss.transform;
     }
 
@@ -60,7 +60,7 @@ public class DoorController : MonoBehaviour
             playerInTrigger = true;
             tanksInTrigger++;
         }
-        else if (col.gameObject.tag == "Boss")
+        else if (col.gameObject.tag == "Enemy")
         {
             print(dist);
             if (doorClosing)
@@ -90,7 +90,7 @@ public class DoorController : MonoBehaviour
             tanksInTrigger--;
         }
 
-        else if (col.gameObject.tag == "Boss")
+        else if (col.gameObject.tag == "Enemy")
         {
             tanksInTrigger--;
         }

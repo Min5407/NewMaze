@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public int playerHealth;
+
     public void PlayGame()
     {
+        playerHealth = 100;
+        PlayerPrefs.SetInt("currentHealth", playerHealth);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

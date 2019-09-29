@@ -108,7 +108,7 @@ public class Boss : MonoBehaviour
     protected void UpdatePatrolState()
     {
 
-        anim.SetInteger("attack", 1);
+        anim.SetInteger("attack", 0);
 
         // NavMeshAgent move code goes here
         //nav.SetDestination(waypointList[currentWaypoint].transform.position);
@@ -259,6 +259,7 @@ public class Boss : MonoBehaviour
         {
             //_rigidbody.AddForce(-transform.forward * 300, ForceMode.Acceleration);
             print("collide with player");
+            Invoke("Update", 5f);
 
         }
     }

@@ -11,9 +11,15 @@ public class Help : MonoBehaviour
     public GameObject keyImage;
     public GameObject helpCanvas;
     public GameObject chickenCanvas;
+    public InputField username;
+    private int timeTaken;
     bool help;
     Stopwatch stopWatch;
     public GameObject timer;
+
+
+    // For leaderboard
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +27,7 @@ public class Help : MonoBehaviour
         stopWatch = new Stopwatch();
 
         stopWatch.Start();
-        
+
 
     }
 
@@ -33,7 +39,10 @@ public class Help : MonoBehaviour
 
         Text time = timer.GetComponent<Text>();
         time.text = "Timer: " + elapsedTime;
-   
+
+        //timeTaken = (int)stopWatch.Elapsed.TotalSeconds;
+        timeTaken = stopWatch.Elapsed.Seconds;
+
 
 
         if (help)
@@ -54,6 +63,7 @@ public class Help : MonoBehaviour
             chickenCanvas.SetActive(true);
 
         }
+
 
 
     }
@@ -92,5 +102,22 @@ public class Help : MonoBehaviour
 
 
         }
+    }
+
+    public void SubmitLeaderboard()
+    {
+
+        GetComponent<LeaderBoard>().CheckForHighScore(timeTaken, username.text);
+        username.text = null;
+    }
+
+    public void pauseStopWatch()
+    {
+        stopWatch.Stop();
+    }
+
+    public void resumeStopWatch()
+    {
+        stopWatch.Start();
     }
 }

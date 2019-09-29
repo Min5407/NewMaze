@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public class BookController : MonoBehaviour
 {
@@ -13,15 +14,34 @@ public class BookController : MonoBehaviour
     private bool bookOpen = false;
     private bool bookOpening = false;
     private bool bookClosing = false;
+
+    //timer
+    Stopwatch stopWatch;
+    public GameObject timer;
+    public InputField username;
+    private int timeTaken;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        stopWatch = new Stopwatch();
+        stopWatch.Start();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}",
+              stopWatch.Elapsed.Hours, stopWatch.Elapsed.Minutes, stopWatch.Elapsed.Seconds);
+
+        Text time = timer.GetComponent<Text>();
+        time.text = "Timer: " + elapsedTime;
+
+        //timeTaken = (int)stopWatch.Elapsed.TotalSeconds;
+        timeTaken = stopWatch.Elapsed.Seconds;
+
         if (playerInTrigger)
         {
             if (Input.GetKeyDown("e"))
@@ -68,5 +88,21 @@ public class BookController : MonoBehaviour
         }
     }
 
- 
+    public void SubmitLeaderboard()
+    {
+
+        GetComponent<LeaderBoard>().CheckForHighScore(timeTaken, username.text);
+        username.text = null;
+    }
+
+    public void pauseStopWatch()
+    {
+        stopWatch.Stop();
+    }
+
+    public void resumeStopWatch()
+    {
+        stopWatch.Start();
+    }
+
 }

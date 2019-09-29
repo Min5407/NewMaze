@@ -57,29 +57,37 @@ public class MazeQuiz2 : MonoBehaviour
             {
                 userAnswer = 2;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
+
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
             {
                 userAnswer = 1;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
+
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
             {
                 userAnswer = 3;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
+
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
             {
                 userAnswer = 4;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
+
             }
         }
 
@@ -91,22 +99,9 @@ public class MazeQuiz2 : MonoBehaviour
 
         if (failPanelOpen)
         {
-            Invoke("closefailPanel", 2f);
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                failPanel.SetActive(false);
-                failPanelOpen = false;
 
-                instruction.SetActive(true);
-                bookActivated = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                failPanel.SetActive(false);
-                failPanelOpen = false;
-            }
+            Invoke("closefailPanel", 2.0f);
 
-            //Invoke("closefailPanel", 2.0f);
 
         }
 
@@ -114,12 +109,18 @@ public class MazeQuiz2 : MonoBehaviour
 
     }
 
+    private void healthDecrease()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        print(player.name);
+        player.SendMessage("ApplyDamage", 20);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player" & quizComplete == false)
-            
+
         {
-            print("player enter");
             if (keyTexture)
             {
                 keyTexture.SetActive(true);
@@ -132,12 +133,33 @@ public class MazeQuiz2 : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
-        {
-            if (keyTexture)
+            if (userAnswer != 0 & userAnswer != answer)
             {
-                keyTexture.SetActive(false);
+
+                if (keyTexture)
+                {
+                    keyTexture.SetActive(false);
+                }
             }
+        {
+
             playerInTrigger = false;
+        }
+
+
+
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            if (userAnswer != 0 & userAnswer != answer)
+            {
+                //GameObject player = GameObject.FindWithTag("Player");
+                //print(player.name);
+                //player.SendMessage("ApplyDamage", 20);
+            }
         }
     }
 
@@ -176,10 +198,11 @@ public class MazeQuiz2 : MonoBehaviour
                 failPanelOpen = true;
                 quizComplete = false;
                 userAnswer = 0;
+                healthDecrease();
 
             }
         }
 
-        
+
     }
 }

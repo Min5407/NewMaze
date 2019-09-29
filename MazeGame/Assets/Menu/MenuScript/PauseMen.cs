@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Diagnostics;
+using System.Threading;
 
 public class PauseMen : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class PauseMen : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    public GameObject outPost;
     // Update is called once per frame
     void Update()
     {
@@ -17,14 +20,17 @@ public class PauseMen : MonoBehaviour
             if (GameIsPaused)
             {
                 print("resume");
+                outPost.GetComponent<Help>().resumeStopWatch();
                 Resume();
             } else
             {
                 print("pause");
+                outPost.GetComponent<Help>().pauseStopWatch();
 
                 Pause();
             }
         }
+        
     }
 
     public void Resume()
@@ -43,7 +49,7 @@ public class PauseMen : MonoBehaviour
 
     public void LoadMenu()
     {
-        Debug.Log("Help");
+        //Debug.Log("Help");
     }
 
     public void QuitGame()
