@@ -35,11 +35,28 @@ public class ChickenController : MonoBehaviour
     public GameObject lostPanel;
     // Start is called before the first frame update
 
+    private IEnumerator waitBoss()
+    {
+        GameObject.FindWithTag("Enemy").GetComponent<Boss>().enabled = false;
+        GameObject.FindWithTag("Enemy").GetComponent<Animator>().SetInteger("attack",0);
+        yield return new WaitForSeconds(5);
+        GameObject.FindWithTag("Enemy").GetComponent<Boss>().enabled = true;
+    }
+
+    private IEnumerator waitEnemy()
+    {
+        GameObject.FindWithTag("Enemy").GetComponent<Enemy>().enabled = false;
+        yield return new WaitForSeconds(5);
+        GameObject.FindWithTag("Enemy").GetComponent<Enemy>().enabled = true;
+    }
+
     private IEnumerator ChangeCamera()
     {
+
         cam1.gameObject.SetActive(false);
         cam2.gameObject.SetActive(true);
         yield return new WaitForSeconds(5);
+
         cam1.gameObject.SetActive(true);
         cam2.gameObject.SetActive(false);
     }
@@ -79,6 +96,7 @@ public class ChickenController : MonoBehaviour
         {
 
             StartCoroutine(ChangeCamera());
+
             //SceneManager.LoadScene("BossRoom");
             
             
@@ -232,6 +250,21 @@ public class ChickenController : MonoBehaviour
         }
         else {
             health -= damage;
+
+            Scene scene = SceneManager.GetActiveScene();
+            if(scene.name == "BossRoom")
+            {
+
+                StartCoroutine(waitBoss());
+
+                //GameObject.FindWithTag("Enemy").GetComponent<Boss>().enabled = false;
+            }
+            else
+            {
+
+                StartCoroutine(waitEnemy());
+
+            }
             healthbar.rectTransform.sizeDelta = new Vector2(new_width, health_height);
             PlayerPrefs.SetInt("currentHealth", health);
             print(health);
@@ -254,4 +287,6 @@ public class ChickenController : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+   
 }

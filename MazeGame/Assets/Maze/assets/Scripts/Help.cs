@@ -120,4 +120,9 @@ public class Help : MonoBehaviour
     {
         stopWatch.Start();
     }
+
+    public void saveTime()
+    {
+        PlayerPrefs.SetInt("timeTaken", (int)stopWatch.Elapsed.TotalSeconds);
+    }
 }

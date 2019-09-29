@@ -36,10 +36,12 @@ public class Quiz : MonoBehaviour
         {
             if (Input.GetKeyDown("e"))
             {
+                
                 quizComplete = false;
                 keyTexture.SetActive(false);
                 instruction.SetActive(true);
                 bookActivated = true;
+
             }
 
 
@@ -56,29 +58,34 @@ public class Quiz : MonoBehaviour
             {
                 userAnswer = 2;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
             {
                 userAnswer = 1;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
+
             }
             else if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3))
             {
                 userAnswer = 3;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4) || Input.GetKeyDown(KeyCode.Keypad4))
             {
                 userAnswer = 4;
                 quizComplete = true;
-                bookActivated = false;
                 quizCompleted();
+                quizComplete = false;
+                bookActivated = false;
             }
         }
 
@@ -90,21 +97,9 @@ public class Quiz : MonoBehaviour
 
         if (failPanelOpen)
         {
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                failPanel.SetActive(false);
-                failPanelOpen = false;
 
-                instruction.SetActive(true);
-                bookActivated = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                failPanel.SetActive(false);
-                failPanelOpen = false;
-            }
 
-            //Invoke("closefailPanel", 2.0f);
+            Invoke("closefailPanel", 1.0f);
 
         }
 
@@ -124,6 +119,13 @@ public class Quiz : MonoBehaviour
 
             playerInTrigger = true;
         }
+    }
+
+    private void healthDecrease()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        print(player.name);
+        player.SendMessage("ApplyDamage", 10);
     }
 
     private void OnTriggerExit(Collider other)
@@ -172,7 +174,7 @@ public class Quiz : MonoBehaviour
                 failPanelOpen = true;
                 quizComplete = false;
                 userAnswer = 0;
-
+                healthDecrease();
             }
         }
 

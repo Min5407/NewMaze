@@ -49,6 +49,7 @@ public class Boss : MonoBehaviour
 
     public GameObject congratulationPanel;
     public Text scoreText;
+    public GameObject instructionBook;
 
     Animator anim;
     // Start is called before the first frame update
@@ -97,7 +98,7 @@ public class Boss : MonoBehaviour
         if (score == 7)
         {
             curState = FSMState.Dead;
-            Invoke("mazeClear", 3f);
+            Invoke("mazeClear", 1f);
             
         }
 
@@ -204,10 +205,11 @@ public class Boss : MonoBehaviour
         else
         {
             nav.isStopped = true;
+
         }
 
         //return to chase state if player moves out of attack range
-        if(dist > attackRange)
+        if (dist > attackRange)
         {
             nav.isStopped = false;
             curState = FSMState.Chase;
@@ -259,15 +261,33 @@ public class Boss : MonoBehaviour
         {
             //_rigidbody.AddForce(-transform.forward * 300, ForceMode.Acceleration);
             print("collide with player");
-            Invoke("Update", 5f);
+            //anim.SetInteger("attack", 0);
+            //nav.isStopped = true;
+            //Invoke("resumeEnemy", 5f);
 
         }
     }
 
     void mazeClear()
     {
-        Time.timeScale = 0;
+
+
         congratulationPanel.SetActive(true);
+        instructionBook.GetComponent<BookController>().pauseStopWatch();
+        Time.timeScale = 0;
+    }
+
+    void StopEnemy()
+    {
+        anim.SetInteger("attack", 0);
+        nav.isStopped = true;
+        Invoke("resumeEnemy", 5f);
+    }
+
+    void resumeEnemy()
+    {
+
+        nav.isStopped = false;
     }
 
 }

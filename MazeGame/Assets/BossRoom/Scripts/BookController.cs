@@ -21,9 +21,14 @@ public class BookController : MonoBehaviour
     public InputField username;
     private int timeTaken;
 
+
+    // button
+    public GameObject button;
+    public GameObject menuButton;
     // Start is called before the first frame update
     void Start()
     {
+        menuButton.SetActive(false);
         stopWatch = new Stopwatch();
         stopWatch.Start();
 
@@ -40,7 +45,7 @@ public class BookController : MonoBehaviour
         time.text = "Timer: " + elapsedTime;
 
         //timeTaken = (int)stopWatch.Elapsed.TotalSeconds;
-        timeTaken = stopWatch.Elapsed.Seconds;
+        //timeTaken =(int)stopWatch.Elapsed.TotalSeconds;
 
         if (playerInTrigger)
         {
@@ -90,9 +95,14 @@ public class BookController : MonoBehaviour
 
     public void SubmitLeaderboard()
     {
-
+        int timeFromLast = PlayerPrefs.GetInt("timeTaken");
+        timeTaken = (int)stopWatch.Elapsed.TotalSeconds;
+        timeTaken += timeFromLast;
         GetComponent<LeaderBoard>().CheckForHighScore(timeTaken, username.text);
         username.text = null;
+        button.SetActive(false);
+        menuButton.SetActive(true);
+
     }
 
     public void pauseStopWatch()
