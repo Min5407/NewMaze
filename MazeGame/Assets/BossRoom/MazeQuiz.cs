@@ -136,6 +136,7 @@ public class MazeQuiz : MonoBehaviour
             if (keyTexture)
             {
                 keyTexture.SetActive(false);
+                instruction.SetActive(false);
             }
             playerInTrigger = false;
         }

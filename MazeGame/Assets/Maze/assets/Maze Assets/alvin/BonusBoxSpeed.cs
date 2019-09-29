@@ -10,8 +10,7 @@ public class BonusBoxSpeed : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        print(player.name);
-        
+
     }
 
     // Update is called once per frame

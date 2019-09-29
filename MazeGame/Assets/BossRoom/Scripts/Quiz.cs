@@ -135,6 +135,7 @@ public class Quiz : MonoBehaviour
             if (keyTexture)
             {
                 keyTexture.SetActive(false);
+                instruction.SetActive(false);
             }
             playerInTrigger = false;
         }

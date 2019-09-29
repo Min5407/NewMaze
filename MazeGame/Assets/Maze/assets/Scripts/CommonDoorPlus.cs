@@ -26,7 +26,7 @@ public class CommonDoorPlus : MonoBehaviour
         //movePos = moveToObject.transform.position;
         totalDist = Vector3.Distance(initialPos, movePos);
         DoorSound = GameObject.Find("Doors&Food").GetComponent<AudioSource>();
-        DoorSound.Stop();
+        //DoorSound.Stop();
 
         //keyImage.SetActive(false);
     }
@@ -65,10 +65,7 @@ public class CommonDoorPlus : MonoBehaviour
                     {
                         doorOpen = true;
                         DoorSound.Play();
-            print(DoorSound);
-
-            print("play");
-                        //Invoke("mute", 2.8f);
+                        Invoke("mute", 2.8f);
             
 
             //Destroy(this.gameObject);

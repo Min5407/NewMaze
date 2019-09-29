@@ -95,9 +95,9 @@ public class ChickenController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.C))
         {
 
-            StartCoroutine(ChangeCamera());
+            //StartCoroutine(ChangeCamera());
 
-            //SceneManager.LoadScene("BossRoom");
+            SceneManager.LoadScene("BossRoom");
             
             
             

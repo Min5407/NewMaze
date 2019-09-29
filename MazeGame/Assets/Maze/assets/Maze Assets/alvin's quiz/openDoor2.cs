@@ -24,7 +24,7 @@ public class openDoor2 : MonoBehaviour
         //movePos = moveToObject.transform.position;
         totalDist = Vector3.Distance(initialPos, movePos);
         DoorSound = GameObject.Find("Doors&Food").GetComponent<AudioSource>();
-        DoorSound.Stop();
+        //DoorSound.Stop();
     }
 
     // Update is called once per frame
